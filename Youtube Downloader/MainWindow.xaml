@@ -15,9 +15,9 @@
         <RadioButton x:Name="radioVideo" Content="Video" HorizontalAlignment="Left" Margin="161,168,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="radioAudio" Content="Audio" HorizontalAlignment="Left" Margin="278,168,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Select whether to save as Video or Audio file(s):" HorizontalAlignment="Left" Margin="120,131,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="downloadButton" Content="Download" HorizontalAlignment="Left" Margin="210,205,0,0" VerticalAlignment="Top" Width="75" Click="downloadButton_Click"/>
+        <Button x:Name="downloadButton" Content="Download" HorizontalAlignment="Left" Margin="200,215,0,0" VerticalAlignment="Top" Width="75" Click="downloadButton_Click"/>
         <ProgressBar x:Name="ProgressBar" Minimum="0" HorizontalAlignment="Left" Height="26" Margin="67,266,0,0" VerticalAlignment="Top" Width="369"/>
         <Label x:Name="label3" Content="Download Either a single youtube video or all the videos in a youtube playlist" HorizontalAlignment="Left" Margin="67,10,0,0" VerticalAlignment="Top" Width="420"/>
-        <Label x:Name="label4" Content="0/0" HorizontalAlignment="Left" Margin="219,266,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="0/0" HorizontalAlignment="Left" Margin="219,266,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
     </Grid>
 </Window>

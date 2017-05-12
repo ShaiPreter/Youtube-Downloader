@@ -7,12 +7,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
+
+
 
 namespace Youtube_Downloader
 {
@@ -35,7 +37,7 @@ namespace Youtube_Downloader
             Path.Text = f;
         }
 
-        private void downloadButton_Click(object sender, RoutedEventArgs e)
+        private async void downloadButton_Click(object sender, RoutedEventArgs e)
         {
 
             if (radioVideo.IsChecked == false && radioAudio.IsChecked == false)
@@ -56,24 +58,34 @@ namespace Youtube_Downloader
             if (url.IndexOf("playlist") == -1 && radioAudio.IsChecked == true)
             {
                 Console.WriteLine("Audio file");
-                Downloader.audioDownload(url, path);
+                ProgressBar.IsIndeterminate = true;
+                await Downloader.audioDownload(url, path);
+                ProgressBar.IsIndeterminate = false;
             }
             else if (url.IndexOf("playlist") != -1 && radioAudio.IsChecked == true)
             {
                 Console.WriteLine("Audio playlist");
-                Downloader.downloadAudioPlaylist(url, path);
+                label4.Visibility = Visibility.Visible;
+                await Downloader.downloadAudioPlaylist(url, path);
+                label4.Visibility = Visibility.Hidden;
             }
             else if (url.IndexOf("playlist") == -1 && radioVideo.IsChecked == true)
             {
                 Console.WriteLine("Video file");
-                Downloader.videoDownload(url, path);
+                ProgressBar.IsIndeterminate = true;
+                await Downloader.videoDownload(url, path);
+                ProgressBar.IsIndeterminate = false;
             }
             else if (url.IndexOf("playlist") != -1 && radioVideo.IsChecked == true)
             {
                 Console.WriteLine("Video Playlist");
-                Downloader.downloadVideoPlaylist(url, path);
+                label4.Visibility= Visibility.Visible;
+                await Downloader.downloadVideoPlaylist(url, path);
+                label4.Visibility = Visibility.Hidden;
             }
-           
+
+            System.Windows.Forms.MessageBox.Show(new Form() { WindowState = FormWindowState.Maximized, TopMost = true }, "Download Completed");
         }
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -140,6 +139,7 @@ namespace Youtube_Downloader
         public static async Task downloadAudioPlaylist(String url, String path)
         {
             ArrayList urls = getVideoURLs(url);
+            Total = urls.Count;
             ((MainWindow)System.Windows.Application.Current.MainWindow).ProgressBar.Maximum = urls.Count;
             string totalString = Total.ToString();
             ((MainWindow)System.Windows.Application.Current.MainWindow).label4.Content = "0/" + totalString;
